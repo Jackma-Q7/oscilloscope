@@ -1,0 +1,10 @@
+PLL_Name	lcd_rgb_char:u_lcd_rgb_char|lcd_pll:u_lcd_pll|altpll:altpll_component|lcd_pll_altpll:auto_generated|pll1
+PLLJITTER	30
+PLLSPEmax	84
+PLLSPEmin	-53
+
+PLL_Name	pll_top:u_pll_top|altpll:altpll_component|pll_top_altpll:auto_generated|pll1
+PLLJITTER	35
+PLLSPEmax	84
+PLLSPEmin	-53
+

@@ -1,0 +1,29 @@
+# Quartus generated databases and reports
+quartus_prj/db/
+quartus_prj/incremental_db/
+quartus_prj/output_files/
+quartus_prj/simulation/
+quartus_prj/*.qws
+quartus_prj/*.qdf
+quartus_prj/*.qmsg
+
+# Generated IP scratch folders
+rtl/**/greybox_tmp/
+rtl/**/output_files/
+rtl/**/.history/
+
+# Duplicate exported project copy. Keep it locally until the main project is confirmed.
+shiboqi/
+
+# Simulator outputs
+sim/work/
+sim/transcript
+sim/vsim.wlf
+*.vcd
+*.wlf
+
+# OS/editor files
+Thumbs.db
+.DS_Store
+*.bak
+*.tmp

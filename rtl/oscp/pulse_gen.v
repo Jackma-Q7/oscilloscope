@@ -1,0 +1,46 @@
+module pulse_gen(
+    input           rst_n,      //系统复位，低电平有效
+    
+    input  [7:0]    trig_level,
+
+    input           ad_clk,     //AD9280驱动时钟
+    input  [7:0]    ad_data,    //AD输入数据
+    
+    output          ad_pulse    //输出的脉冲信号
+);
+
+//reg define
+reg pulse;
+reg pulse_delay;
+reg pulse_delay2;
+
+assign ad_pulse = pulse & pulse_delay & pulse_delay2;
+
+//根据触发电平，将输入的AD采样值转换成高低电平
+always @ (posedge ad_clk or negedge rst_n)begin
+    if(!rst_n)
+        pulse <= 1'b0;
+    else
+        if(ad_data < trig_level)
+            pulse <= 1'b0;
+        else
+            pulse <= 1'b1;
+end
+
+//延时一个时钟周期，用于消除抖动
+always @ (posedge ad_clk or negedge rst_n)begin
+    if(!rst_n)
+        pulse_delay <= 1'b0;
+    else
+        pulse_delay <= pulse;
+end
+
+//延时一个时钟周期，用于消除抖动
+always @ (posedge ad_clk or negedge rst_n)begin
+    if(!rst_n)
+        pulse_delay2 <= 1'b0;
+    else
+        pulse_delay2 <= pulse_delay;
+end
+
+endmodule 
